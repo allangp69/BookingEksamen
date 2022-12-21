@@ -8,3 +8,4 @@ packages/
 *.sln.docstates
 output/
 **/.nuke/temp/
+staticwebassets.build.json
