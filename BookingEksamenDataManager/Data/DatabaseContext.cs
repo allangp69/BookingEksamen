@@ -13,6 +13,7 @@ public class DatabaseContext
 
     public virtual DbSet<UserInfo>? UserInfos { get; set; }
     public virtual DbSet<Artist>? Artists { get; set; }
+    public virtual DbSet<Booker>? Bookers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
