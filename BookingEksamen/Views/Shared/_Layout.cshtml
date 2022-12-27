@@ -1,6 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using Microsoft.AspNetCore.Mvc.TagHelpers
-@inject SignInManager<IdentityUser> SignInManager
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,21 +27,6 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        @if (User.IsInRole("Artist"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Artist" asp-action="Index">Dashboard</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Booker" asp-action="Index">Dashboard</a>
-                            </li>
-                        }
-                    }
                 </ul>
                 <partial name="_LoginPartial"/>
             </div>
