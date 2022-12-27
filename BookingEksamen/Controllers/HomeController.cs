@@ -1,20 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using BookingEksamenWebUI.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookingEksamen.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(SignInManager<IdentityUser> signInManager, ILogger<HomeController> logger)
         {
+            _signInManager = signInManager;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            if (_signInManager.IsSignedIn(User))
+            {
+                if (User.IsInRole("Artist"))
+                {
+                    return RedirectToAction("Index", "Artist");    
+                }
+                return RedirectToAction("Index", "Booker");
+            }
             return View();
         }
         
