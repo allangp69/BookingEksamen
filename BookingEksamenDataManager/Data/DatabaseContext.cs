@@ -14,6 +14,7 @@ public class DatabaseContext
     public virtual DbSet<UserInfo>? UserInfos { get; set; }
     public virtual DbSet<Artist>? Artists { get; set; }
     public virtual DbSet<Booker>? Bookers { get; set; }
+    public virtual DbSet<Comment>? Comments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -36,6 +37,15 @@ public class DatabaseContext
             entity.Property(e => e.LoginID).HasMaxLength(256).IsUnicode(false);
             entity.Property(e => e.StartDate).IsUnicode(false);
             entity.Property(e => e.ModifiedDate).IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Comment>(entity =>
+        {
+            entity.ToTable("Comment");
+            entity.Property(e => e.Id).HasColumnName("Id");
+            entity.Property(e => e.EmailAddress).HasMaxLength(256).IsUnicode(false);
+            entity.Property(e => e.LastName).HasMaxLength(256).IsUnicode(false);
+            entity.Property(e => e.FirstMidName).HasMaxLength(256).IsUnicode(false);
         });
     }
 }
