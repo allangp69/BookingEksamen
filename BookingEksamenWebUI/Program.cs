@@ -12,6 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<APIHelper>();
@@ -55,7 +56,8 @@ static void CreateDbIfNotExists(WebApplication host)
         try
         {
             var context = services.GetRequiredService<ApplicationDbContext>();
-            DbInitializer.Initialize(context);
+            var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            DbInitializer.Initialize(context, roleManager);
         }
         catch (Exception ex)
         {
