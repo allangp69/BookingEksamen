@@ -20,7 +20,22 @@ public static class DbInitializer
             new Artist{Name="The Funny StandUp Guy", ShortDescription="The funniest man on earth", LongDescription = "The funniest man on earth"},
             new Artist{Name="The Laid Back Jazz Band", ShortDescription="The coolest jazz band in the galaxy", LongDescription = "The coolest jazz band in the galaxy"},
         };
-        artists.ForEach(g => context.Artists.Add(g));
+        artists.ForEach(a => context.Artists.Add(a));
+        context.SaveChanges();
+        
+        var bookers = new List<Booker>
+        {
+            new Booker{Name="Allan G. Pedersen"},
+            new Booker{Name="Karl Einer"}
+        };
+        bookers.ForEach(b => context.Bookers.Add(b));
+        context.SaveChanges();
+        
+        var comments = new List<Comment>
+        {
+            new Comment{LastName = "Pedersen", FirstMidName = "Allan Grønbæk", EmailAddress = "allangpedersen@yahoo.dk", CommentText = "Dette er en lille kommentar - vil bare teste om det virker"}
+        };
+        comments.ForEach(c => context.Comments.Add(c));
         context.SaveChanges();
     }
 }
