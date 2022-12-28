@@ -10,20 +10,18 @@ namespace BookingEksamen.Controllers
     public class CommentController : Controller
     {
         private readonly ILogger<CommentController> _logger;
-        private readonly APIHelper _apiHelper;
-        private readonly ApplicationDbContext _context;
+        private readonly CommentAPIHelper _commentApiHelper;
         
-        public CommentController(APIHelper apiHelper, ApplicationDbContext context, ILogger<CommentController> logger)
+        public CommentController(CommentAPIHelper commentApiHelper, ILogger<CommentController> logger)
         {
-            _apiHelper = apiHelper;
-            _context = context;
+            _commentApiHelper = commentApiHelper;
             _logger = logger;
         }
         
         // GET: Comments
         public async Task<IActionResult> Index()
         {
-            var comments = await _apiHelper.GetCommentsAsync();
+            var comments = await _commentApiHelper.GetCommentsAsync();
             return View(comments);
         }
         
@@ -42,7 +40,7 @@ namespace BookingEksamen.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    await _apiHelper.CreateCommentAsync(comment);
+                    await _commentApiHelper.CreateCommentAsync(comment);
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -58,7 +56,7 @@ namespace BookingEksamen.Controllers
         {
             try
             {
-                await _apiHelper.DeleteCommentAsync(id); 
+                await _commentApiHelper.DeleteCommentAsync(id); 
                 return RedirectToAction("Index", "Comment");
             }
             catch (DataException /* dex */)

@@ -8,17 +8,17 @@ namespace BookingEksamen.Controllers
     public class BookerController : Controller
     {
         private readonly ILogger<BookerController> _logger;
-        private readonly APIHelper _apiHelper;
+        private readonly BookerAPIHelper _bookerApiHelper;
 
-        public BookerController(ILogger<BookerController> logger, APIHelper apiHelper)
+        public BookerController(ILogger<BookerController> logger, BookerAPIHelper bookerApiHelper)
         {
             _logger = logger;
-            _apiHelper = apiHelper;
+            _bookerApiHelper = bookerApiHelper;
         }
 
         public IActionResult Index()
         {
-            var result = _apiHelper.Authenticate("","");
+            var result = _bookerApiHelper.Authenticate("","");
             return View();
         }
 

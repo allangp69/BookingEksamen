@@ -4,7 +4,7 @@ using BookingEksamenWebUI.Models;
 
 namespace BookingEksamenUI.Helpers
 {
-    public class APIHelper
+    public abstract class APIHelper
     {
         private readonly IConfiguration _configuration;
 
@@ -23,28 +23,7 @@ namespace BookingEksamenUI.Helpers
             ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
-        public async Task<IEnumerable<Comment>> GetCommentsAsync()
-        {
-            IEnumerable<Comment> comments = null;
-            HttpResponseMessage response = await ApiClient.GetAsync("api/Comment");
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<IEnumerable<Comment>>();
-        }
-
-        public async Task<Uri> CreateCommentAsync(Comment comment)
-        {
-            HttpResponseMessage response = await ApiClient.PostAsJsonAsync("api/Comment", comment);
-            response.EnsureSuccessStatusCode();
-            return response.Headers.Location;
-        }
         
-        public async Task<HttpStatusCode> DeleteCommentAsync(int id)
-        {
-            HttpResponseMessage response = await ApiClient.DeleteAsync($"api/Comment/{id}");
-            return response.StatusCode;
-        }
-
         public async Task<AuthenticatedUser> Authenticate(string username, string password)
         {
             var data = new FormUrlEncodedContent(new[]

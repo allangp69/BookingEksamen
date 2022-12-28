@@ -8,17 +8,17 @@ namespace BookingEksamen.Controllers
     public class ArtistController : Controller
     {
         private readonly ILogger<ArtistController> _logger;
-        private readonly APIHelper _apiHelper;
+        private readonly ArtistAPIHelper _artistApiHelper;
 
-        public ArtistController(ILogger<ArtistController> logger, APIHelper apiHelper)
+        public ArtistController(ILogger<ArtistController> logger, ArtistAPIHelper artistApiHelper)
         {
             _logger = logger;
-            _apiHelper = apiHelper;
+            _artistApiHelper = artistApiHelper;
         }
 
         public IActionResult Index()
         {
-            var result = _apiHelper.Authenticate("","");
+            var result = _artistApiHelper.Authenticate("","");
             return View();
         }
 

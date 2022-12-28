@@ -15,7 +15,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<APIHelper>();
+builder.Services.AddSingleton<CommentAPIHelper>();
+builder.Services.AddSingleton<BookerAPIHelper>();
+builder.Services.AddSingleton<ArtistAPIHelper>();
 
 var app = builder.Build();
 
