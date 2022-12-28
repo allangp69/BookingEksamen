@@ -27,6 +27,7 @@ public class CommentRepository
     public void AddComment(Comment comment)
     {
         _databaseContext.Comments.Add(comment);
+        _databaseContext.SaveChanges();
     }
 
     public void UpdateComment(Comment comment)
