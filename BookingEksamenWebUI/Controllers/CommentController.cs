@@ -54,6 +54,21 @@ namespace BookingEksamen.Controllers
             return View(comment);
         }
         
+        public async Task<ActionResult> Delete(int id)
+        {
+            try
+            {
+                await _apiHelper.DeleteCommentAsync(id); 
+                return RedirectToAction("Index", "Comment");
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return RedirectToAction("Index", "Comment");
+        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
