@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Net;
+using System.Net.Http.Headers;
 using BookingEksamenWebUI.Models;
 
 namespace BookingEksamenUI.Helpers
@@ -38,6 +39,12 @@ namespace BookingEksamenUI.Helpers
             return response.Headers.Location;
         }
         
+        public async Task<HttpStatusCode> DeleteCommentAsync(int id)
+        {
+            HttpResponseMessage response = await ApiClient.DeleteAsync($"api/Comment/{id}");
+            return response.StatusCode;
+        }
+
         public async Task<AuthenticatedUser> Authenticate(string username, string password)
         {
             var data = new FormUrlEncodedContent(new[]
