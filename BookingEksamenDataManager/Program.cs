@@ -14,6 +14,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddTransient<IArtists, ArtistRepository>();
 builder.Services.AddTransient<IBookers, BookerRepository>();
+builder.Services.AddTransient<IComments, CommentRepository>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
