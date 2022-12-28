@@ -23,6 +23,21 @@ namespace BookingEksamenUI.Helpers
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
+        public async Task<IEnumerable<Comment>> GetCommentsAsync()
+        {
+            IEnumerable<Comment> comments = null;
+            HttpResponseMessage response = await ApiClient.GetAsync("api/Comment");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsAsync<IEnumerable<Comment>>();
+        }
+
+        public async Task<Uri> CreateCommentAsync(Comment comment)
+        {
+            HttpResponseMessage response = await ApiClient.PostAsJsonAsync("api/Comment", comment);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
+        }
+        
         public async Task<AuthenticatedUser> Authenticate(string username, string password)
         {
             var data = new FormUrlEncodedContent(new[]
@@ -32,7 +47,7 @@ namespace BookingEksamenUI.Helpers
                 new KeyValuePair<string, string>("password", password)
             });
 
-            using (HttpResponseMessage response = await ApiClient.PostAsync("/Token", data))
+            using (HttpResponseMessage response = await ApiClient.PostAsync("/api/Token", data))
             {
                 if (response.IsSuccessStatusCode)
                 {
