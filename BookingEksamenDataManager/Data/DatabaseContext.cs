@@ -39,6 +39,15 @@ public class DatabaseContext
             entity.Property(e => e.ModifiedDate).IsUnicode(false);
         });
 
+        modelBuilder.Entity<Booker>(entity =>
+        {
+            entity.ToTable("Booker");
+            entity.Property(e => e.BookerID).HasColumnName("BookerID");
+            entity.Property(e => e.LoginID).HasMaxLength(256).IsUnicode(false);
+            entity.Property(e => e.StartDate).IsUnicode(false);
+            entity.Property(e => e.ModifiedDate).IsUnicode(false);
+        });
+        
         modelBuilder.Entity<Comment>(entity =>
         {
             entity.ToTable("Comment");
