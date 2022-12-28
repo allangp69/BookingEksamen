@@ -23,9 +23,6 @@
         <th>
             @Html.DisplayNameFor(model => model.First().EmailAddress)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().CommentText)
-        </th>
         <th></th>
     </tr>
 
@@ -41,14 +38,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EmailAddress)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentText)
-            </td>
+            <tr>
+                <td colspan="3">
+                    @Html.DisplayFor(modelItem => item.CommentText)
+                </td>
+            </tr>
             <td>
                 @* @Html.ActionLink("Edit", "Edit", new {id = item.ArtistId}) | *@
                 @* @Html.ActionLink("Details", "Details", new {id = item.ArtistId}) | *@
                 @* @Html.ActionLink("Delete", "Delete", new {id = item.ArtistId}) *@
             </td>
+            <p/>
         </tr>
     }
 </table>
