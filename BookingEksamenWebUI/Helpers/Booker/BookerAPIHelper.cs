@@ -1,11 +1,10 @@
 ﻿using System.Net;
-using System.Net.Http.Headers;
 using BookingEksamenWebUI.Models;
 
 namespace BookingEksamenWebUI.Helpers
 {
     public class BookerAPIHelper
-        : APIHelperBase
+        : APIHelperBase, IBookerAPIHelper, IAuthenticationAPIHelper
     {
         private readonly IConfiguration _configuration;
 
