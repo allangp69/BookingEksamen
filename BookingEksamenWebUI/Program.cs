@@ -18,6 +18,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<CommentAPIHelper>();
 builder.Services.AddSingleton<BookerAPIHelper>();
 builder.Services.AddSingleton<ArtistAPIHelper>();
+builder.Services.AddScoped<IIsSignedInHelper, IsSignedInHelper>();
 
 var app = builder.Build();
 
@@ -37,6 +38,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
