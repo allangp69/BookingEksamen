@@ -15,7 +15,7 @@ public class HomeControllerUnitTests
     }
 
     [Test]
-    public async Task TestHomeController_Index()
+    public async Task TestHomeController_Index_IsSignedIn_False()
     {
         // Arrange
         var mockSignInManager = new Mock<IIsSignedInHelper>();
@@ -29,9 +29,22 @@ public class HomeControllerUnitTests
 
         // Assert
         Assert.IsInstanceOf<ViewResult>(result);
-        // var viewResult = result as ViewResult;
-        // var model = Assert.IsAssignableFrom<IEnumerable<StormSessionViewModel>>(
-        //     viewResult.ViewData.Model);
-        // Assert.Equal(2, model.Count());
+    }
+    
+    [Test]
+    public async Task TestHomeController_Index_IsSignedIn_True()
+    {
+        // Arrange
+        var mockSignInManager = new Mock<IIsSignedInHelper>();
+        var mockLogger = new Mock<ILogger<HomeController>>();
+        mockSignInManager.Setup(manager => manager.IsSignedIn(It.IsAny<ClaimsPrincipal>()))
+            .Returns(true);
+        var controller = new HomeController(mockSignInManager.Object, mockLogger.Object);
+        
+        // Act
+        var result = await controller.Index();
+
+        // Assert
+        Assert.IsInstanceOf<ViewResult>(result);
     }
 }
