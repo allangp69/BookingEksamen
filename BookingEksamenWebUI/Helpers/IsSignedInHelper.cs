@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 
-namespace BookingEksamenUI.Helpers;
+namespace BookingEksamenWebUI.Helpers;
 
 public class IsSignedInHelper
         :IIsSignedInHelper

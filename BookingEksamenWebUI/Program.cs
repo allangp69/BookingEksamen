@@ -1,5 +1,5 @@
 using BookingEksamen.Data;
-using BookingEksamenUI.Helpers;
+using BookingEksamenWebUI.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

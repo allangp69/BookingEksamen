@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace BookingEksamenUI.Helpers;
+namespace BookingEksamenWebUI.Helpers;
 
 public interface IIsSignedInHelper
 {

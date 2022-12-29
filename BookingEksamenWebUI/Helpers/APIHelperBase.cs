@@ -1,24 +1,24 @@
-﻿using System.Net;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using BookingEksamenWebUI.Models;
 
-namespace BookingEksamenUI.Helpers
+namespace BookingEksamenWebUI.Helpers
 {
-    public abstract class APIHelper
+    public abstract class APIHelperBase
     {
         private readonly IConfiguration _configuration;
 
-        public APIHelper(IConfiguration configuration)
+        protected APIHelperBase(IConfiguration configuration)
         {
             _configuration = configuration;
             InitializeClient();
         }
-        public HttpClient ApiClient { get; set; }
 
-        public void InitializeClient()
+        protected HttpClient ApiClient { get; set; }
+
+        private void InitializeClient()
         {
             ApiClient = new HttpClient();
-            string apiAddress = _configuration.GetSection("ApiAddress").Value;
+            var apiAddress = _configuration.GetSection("ApiAddress").Value;
             ApiClient.BaseAddress = new Uri(apiAddress);
             ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -35,12 +35,8 @@ namespace BookingEksamenUI.Helpers
 
             using (HttpResponseMessage response = await ApiClient.PostAsync("/api/Token", data))
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsAsync<AuthenticatedUser>();
-                    return result;
-                }
-                throw new Exception(response.ReasonPhrase);
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsAsync<AuthenticatedUser>();
             }
         }
     }

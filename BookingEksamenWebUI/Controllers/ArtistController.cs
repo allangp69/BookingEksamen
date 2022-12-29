@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using BookingEksamenUI.Helpers;
+using BookingEksamenWebUI.Helpers;
 using BookingEksamenWebUI.Models;
 
 namespace BookingEksamen.Controllers
