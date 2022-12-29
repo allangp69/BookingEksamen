@@ -9,9 +9,9 @@ namespace BookingEksamen.Controllers
     public class CommentController : Controller
     {
         private readonly ILogger<CommentController> _logger;
-        private readonly CommentAPIHelper _commentApiHelper;
+        private readonly ICommentAPIHelper _commentApiHelper;
         
-        public CommentController(CommentAPIHelper commentApiHelper, ILogger<CommentController> logger)
+        public CommentController(ICommentAPIHelper commentApiHelper, ILogger<CommentController> logger)
         {
             _commentApiHelper = commentApiHelper;
             _logger = logger;
