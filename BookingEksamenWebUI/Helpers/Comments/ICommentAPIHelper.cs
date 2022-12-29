@@ -8,5 +8,4 @@ public interface ICommentAPIHelper
     Task<IEnumerable<Comment>> GetCommentsAsync();
     Task<Uri> CreateCommentAsync(Comment comment);
     Task<HttpStatusCode> DeleteCommentAsync(int id);
-    Task<AuthenticatedUser> Authenticate(string username, string password);
 }
