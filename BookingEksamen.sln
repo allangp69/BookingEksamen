@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingEksamenDataManager", "BookingEksamenDataManager\BookingEksamenDataManager.csproj", "{70465411-A5E2-4103-9F44-364185668AEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingEksamenDataManager", "BookingEksamenDataManager\BookingEksamenDataManager.csproj", "{70465411-A5E2-4103-9F44-364185668AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingEksamenWebUI", "BookingEksamenWebUI\BookingEksamenWebUI.csproj", "{D8857A51-22AB-4D9C-BE4E-133FD30F0AC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingEksamenWebUI", "BookingEksamenWebUI\BookingEksamenWebUI.csproj", "{D8857A51-22AB-4D9C-BE4E-133FD30F0AC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.BookingEksamenDataManager", "Test.BookingEksamenDataManager\Test.BookingEksamenDataManager.csproj", "{ED6F1297-1AF3-4CD4-A66B-E3338B4D9FFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BookingEksamenDataManager", "Test.BookingEksamenDataManager\Test.BookingEksamenDataManager.csproj", "{ED6F1297-1AF3-4CD4-A66B-E3338B4D9FFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.BookingEksamenWebUI", "Test.BookingEksamenWebUI\Test.BookingEksamenWebUI.csproj", "{9A2891F4-31CB-42C1-8E0B-65B2819DC3AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BookingEksamenWebUI", "Test.BookingEksamenWebUI\Test.BookingEksamenWebUI.csproj", "{9A2891F4-31CB-42C1-8E0B-65B2819DC3AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingEksamenMAUI", "BookingEksamenMAUI\BookingEksamenMAUI.csproj", "{BD35035C-684F-4C37-B571-0A97B1422938}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,12 @@ Global
 		{9A2891F4-31CB-42C1-8E0B-65B2819DC3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A2891F4-31CB-42C1-8E0B-65B2819DC3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A2891F4-31CB-42C1-8E0B-65B2819DC3AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD35035C-684F-4C37-B571-0A97B1422938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD35035C-684F-4C37-B571-0A97B1422938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD35035C-684F-4C37-B571-0A97B1422938}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BD35035C-684F-4C37-B571-0A97B1422938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD35035C-684F-4C37-B571-0A97B1422938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD35035C-684F-4C37-B571-0A97B1422938}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
