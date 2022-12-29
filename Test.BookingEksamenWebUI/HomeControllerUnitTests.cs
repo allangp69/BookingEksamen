@@ -1,6 +1,6 @@
 using System.Security.Claims;
-using BookingEksamen.Controllers;
-using BookingEksamenUI.Helpers;
+using BookingEksamenWebUI.Controllers;
+using BookingEksamenWebUI.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
