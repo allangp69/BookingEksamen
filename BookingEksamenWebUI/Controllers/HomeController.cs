@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using BookingEksamenWebUI.Helpers;
 using BookingEksamenWebUI.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace BookingEksamen.Controllers
+namespace BookingEksamenWebUI.Controllers
 {
     public class HomeController : Controller
     {

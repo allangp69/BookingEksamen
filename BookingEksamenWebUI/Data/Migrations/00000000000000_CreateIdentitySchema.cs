@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace BookingEksamen.Data.Migrations
+namespace BookingEksamenWebUI.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

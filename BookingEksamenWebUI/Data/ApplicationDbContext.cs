@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookingEksamen.Data
+namespace BookingEksamenWebUI.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

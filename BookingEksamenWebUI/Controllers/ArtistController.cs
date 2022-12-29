@@ -3,7 +3,7 @@ using System.Diagnostics;
 using BookingEksamenWebUI.Helpers;
 using BookingEksamenWebUI.Models;
 
-namespace BookingEksamen.Controllers
+namespace BookingEksamenWebUI.Controllers
 {
     public class ArtistController : Controller
     {

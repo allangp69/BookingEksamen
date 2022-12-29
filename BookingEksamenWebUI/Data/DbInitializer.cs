@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace BookingEksamen.Data;
+namespace BookingEksamenWebUI.Data;
 
 public static class DbInitializer
 {
