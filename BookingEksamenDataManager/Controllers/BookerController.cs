@@ -1,12 +1,10 @@
 using BookingEksamenDataManager.Interface;
 using BookingEksamenDataManager.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookingEksamenDataManager.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BookerController : ControllerBase
