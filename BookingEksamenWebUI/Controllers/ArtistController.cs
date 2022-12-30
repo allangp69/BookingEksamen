@@ -8,9 +8,9 @@ namespace BookingEksamenWebUI.Controllers
     public class ArtistController : Controller
     {
         private readonly ILogger<ArtistController> _logger;
-        private readonly ArtistAPIHelper _artistApiHelper;
+        private readonly IArtistAPIHelper _artistApiHelper;
 
-        public ArtistController(ILogger<ArtistController> logger, ArtistAPIHelper artistApiHelper)
+        public ArtistController(IArtistAPIHelper artistApiHelper, ILogger<ArtistController> logger)
         {
             _logger = logger;
             _artistApiHelper = artistApiHelper;
@@ -18,7 +18,19 @@ namespace BookingEksamenWebUI.Controllers
 
         public IActionResult Index()
         {
-            var result = _artistApiHelper.Authenticate("","");
+            if (_artistApiHelper is not IAuthenticationAPIHelper authenticationHelper)
+            {
+                throw new Exception("The API helper does not implement the IAuthenticationAPIHelper interface");
+            }
+            try
+            {
+                //Authentication does not work yet - so the Authenticate call is wrapped in a try/catch for now
+                var result = authenticationHelper.Authenticate("","", "");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             return View();
         }
 

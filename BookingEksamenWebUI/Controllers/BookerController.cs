@@ -8,17 +8,29 @@ namespace BookingEksamenWebUI.Controllers
     public class BookerController : Controller
     {
         private readonly ILogger<BookerController> _logger;
-        private readonly BookerAPIHelper _bookerApiHelper;
+        private readonly IBookerAPIHelper _bookerApiHelper;
 
-        public BookerController(ILogger<BookerController> logger, BookerAPIHelper bookerApiHelper)
+        public BookerController(IBookerAPIHelper bookerApiHelper, ILogger<BookerController> logger)
         {
             _logger = logger;
             _bookerApiHelper = bookerApiHelper;
         }
 
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var result = _bookerApiHelper.Authenticate("","");
+            if (_bookerApiHelper is not IAuthenticationAPIHelper authenticationHelper)
+            {
+                throw new Exception("The API helper does not implement the IAuthenticationAPIHelper interface");
+            }
+            try
+            {
+                //Authentication does not work yet - so the Authenticate call is wrapped in a try/catch for now
+                var result = await authenticationHelper.Authenticate("","", "");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             return View();
         }
 
