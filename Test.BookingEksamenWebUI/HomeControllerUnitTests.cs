@@ -21,7 +21,7 @@ public class HomeControllerUnitTests
         var mockSignInManager = new Mock<IIsSignedInHelper>();
         var mockLogger = new Mock<ILogger<HomeController>>();
         mockSignInManager.Setup(manager => manager.IsSignedIn(It.IsAny<ClaimsPrincipal>()))
-            .Returns(false);
+            .ReturnsAsync(false);
         var controller = new HomeController(mockSignInManager.Object, mockLogger.Object);
         
         // Act
@@ -38,7 +38,7 @@ public class HomeControllerUnitTests
         var mockSignInManager = new Mock<IIsSignedInHelper>();
         var mockLogger = new Mock<ILogger<HomeController>>();
         mockSignInManager.Setup(manager => manager.IsSignedIn(It.IsAny<ClaimsPrincipal>()))
-            .Returns(true);
+            .ReturnsAsync(true);
         var controller = new HomeController(mockSignInManager.Object, mockLogger.Object);
         
         // Act
