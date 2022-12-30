@@ -1,28 +1,43 @@
-﻿@{
+﻿@using BookingEksamenWebUI.Helpers
+@using BookingEksamenWebUI.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
     ViewData["Title"] = "Dashboard";
 }
+@model Booker
+@inject IBookerAPIHelper BookerApiHelper
 
 <div class="text-center">
     <h1 class="display-4">Welcome to the BookAShow dashboard for Bookers</h1>
-    
-     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Comment" asp-action="Index">Show comments</a>
-                        </li>
-                    </ul>
-                </div>
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Comment" asp-action="Index">Show comments</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
+
+
+    @foreach (var booker in BookerApiHelper.GetBookersAsync().Result)
+    {
+        <li>@booker.Name</li>
+    }
+
+    @if (Model is not null)
+    {
+        <partial name="_BookerArtistsPartial" model="Model.Artists" />    
+    }
     
-    
-    <img id="logo" src="~/images/musicNotes.png" alt="BookAShow logo" class="logo" width="500" height="600"/>
-    
+    @* <img id="logo" src="~/images/musicNotes.png" alt="BookAShow logo" class="logo" width="500" height="600"/> *@
+
     <p>Manage bookings for your artists.</p>
 </div>
