@@ -34,7 +34,7 @@ public class TokenController : Controller
         {
             return BadRequest("Invalid credentials");
         }
-        var token = GenerateToken(user);
+        var token = await GenerateToken(user);
         return Ok(token);
     }
 
