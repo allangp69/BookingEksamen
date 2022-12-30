@@ -18,26 +18,27 @@ namespace BookingEksamenWebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            if (_isSignedInHelper.IsSignedIn(User))
+            if (!await _isSignedInHelper.IsSignedIn(User))
             {
-                if (User.IsInRole("Artist"))
-                {
-                    return RedirectToAction("Index", "Artist");    
-                }
-                //Commented out until identity roles are working as intended
-                // if (User.IsInRole("Booker"))
-                // {
-                    return RedirectToAction("Index", "Booker");
-                // }
+                return View();
+            }
+
+            if (await _isSignedInHelper.IsInRole(User, "Artist"))
+            {
+                return RedirectToAction("Index", "Artist");
+            }
+            if (await _isSignedInHelper.IsInRole(User, "Booker"))
+            {
+                return RedirectToAction("Index", "Booker");
             }
             return View();
         }
-        
+
         public IActionResult ReadMore()
         {
             return View();
         }
-        
+
         public IActionResult Contact()
         {
             return View();
@@ -51,7 +52,7 @@ namespace BookingEksamenWebUI.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
     }
 }
