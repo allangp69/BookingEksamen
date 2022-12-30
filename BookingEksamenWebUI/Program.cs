@@ -16,8 +16,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICommentAPIHelper, CommentAPIHelper>();
-builder.Services.AddSingleton<BookerAPIHelper>();
-builder.Services.AddSingleton<ArtistAPIHelper>();
+builder.Services.AddSingleton<IBookerAPIHelper, BookerAPIHelper>();
+builder.Services.AddSingleton<IArtistAPIHelper, ArtistAPIHelper>();
 builder.Services.AddScoped<IIsSignedInHelper, IsSignedInHelper>();
 
 var app = builder.Build();
