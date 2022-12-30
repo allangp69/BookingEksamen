@@ -4,5 +4,6 @@ namespace BookingEksamenWebUI.Helpers;
 
 public interface IIsSignedInHelper
 {
-    bool IsSignedIn(ClaimsPrincipal user);
+    Task<bool> IsSignedIn(ClaimsPrincipal user);
+    Task<bool> IsInRole(ClaimsPrincipal user, string artist);
 }
