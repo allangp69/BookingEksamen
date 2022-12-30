@@ -31,7 +31,8 @@ namespace BookingEksamenWebUI.Controllers
             {
                 Console.WriteLine(e);
             }
-            return View();
+            var booker = _bookerApiHelper.GetBookersAsync().Result.FirstOrDefault(b => b.Email == User.Identity.Name);
+            return View(booker);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
