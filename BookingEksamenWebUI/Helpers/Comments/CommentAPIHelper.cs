@@ -6,8 +6,6 @@ namespace BookingEksamenWebUI.Helpers
     public class CommentAPIHelper
         : APIHelperBase, ICommentAPIHelper, IAuthenticationAPIHelper
     {
-        private readonly IConfiguration _configuration;
-
         public CommentAPIHelper(IConfiguration configuration)
             :base(configuration)
         {

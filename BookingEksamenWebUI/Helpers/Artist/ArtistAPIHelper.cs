@@ -6,8 +6,6 @@ namespace BookingEksamenWebUI.Helpers
     public class ArtistAPIHelper
         : APIHelperBase, IArtistAPIHelper, IAuthenticationAPIHelper
     {
-        private readonly IConfiguration _configuration;
-
         public ArtistAPIHelper(IConfiguration configuration)
             :base(configuration)
         {

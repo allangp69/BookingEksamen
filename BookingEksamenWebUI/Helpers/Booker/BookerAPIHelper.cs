@@ -6,8 +6,6 @@ namespace BookingEksamenWebUI.Helpers
     public class BookerAPIHelper
         : APIHelperBase, IBookerAPIHelper, IAuthenticationAPIHelper
     {
-        private readonly IConfiguration _configuration;
-
         public BookerAPIHelper(IConfiguration configuration)
             :base(configuration)
         {
