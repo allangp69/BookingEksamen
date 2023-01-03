@@ -15,7 +15,7 @@ public class HomeControllerUnitTests
     }
 
     [Test]
-    public async Task TestHomeController_Index_IsSignedIn_False()
+    public async Task HomeController_Index_Returns_ViewResult_IsSignedIn_False()
     {
         // Arrange
         var mockSignInManager = new Mock<IIsSignedInHelper>();
@@ -32,7 +32,7 @@ public class HomeControllerUnitTests
     }
     
     [Test]
-    public async Task TestHomeController_Index_IsSignedIn_True()
+    public async Task HomeController_Index_Returns_ViewResult_IsSignedIn_True()
     {
         // Arrange
         var mockSignInManager = new Mock<IIsSignedInHelper>();
