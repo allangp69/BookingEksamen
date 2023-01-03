@@ -1,5 +1,10 @@
 ﻿using BookingEksamenMAUI.Data;
+using BookingEksamenMAUI.Helpers.Artist;
+using BookingEksamenMAUI.Helpers.Booker;
+using BookingEksamenMAUI.Helpers.Comments;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace BookingEksamenMAUI
 {
@@ -22,7 +27,21 @@ namespace BookingEksamenMAUI
 		builder.Logging.AddDebug();
 #endif
 
+            var a = Assembly.GetExecutingAssembly();
+            using var stream = a.GetManifestResourceStream("MauiApp27.appsettings.json");
+
+            var config = new ConfigurationBuilder()
+                        .AddJsonStream(stream)
+                        .Build();
+
+
+            builder.Configuration.AddConfiguration(config);
+
+
             builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddSingleton<ICommentAPIHelper, CommentAPIHelper>();
+            builder.Services.AddSingleton<IBookerAPIHelper, BookerAPIHelper>();
+            builder.Services.AddSingleton<IArtistAPIHelper, ArtistAPIHelper>();
 
             return builder.Build();
         }

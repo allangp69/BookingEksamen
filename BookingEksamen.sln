@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BookingEksamenDataMana
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BookingEksamenWebUI", "Test.BookingEksamenWebUI\Test.BookingEksamenWebUI.csproj", "{9A2891F4-31CB-42C1-8E0B-65B2819DC3AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingEksamenMAUI", "BookingEksamenMAUI\BookingEksamenMAUI.csproj", "{BD35035C-684F-4C37-B571-0A97B1422938}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingEksamenMAUI", "BookingEksamenMAUI\BookingEksamenMAUI.csproj", "{BD35035C-684F-4C37-B571-0A97B1422938}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{A6DA12BE-495D-4E69-9C8C-5D520D591161}"
 EndProject
@@ -49,13 +49,13 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3413E962-E51A-44AA-A2D3-9FB9F2460F0B}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{BD35035C-684F-4C37-B571-0A97B1422938} = {A6DA12BE-495D-4E69-9C8C-5D520D591161}
 		{D8857A51-22AB-4D9C-BE4E-133FD30F0AC8} = {A6DA12BE-495D-4E69-9C8C-5D520D591161}
 		{ED6F1297-1AF3-4CD4-A66B-E3338B4D9FFB} = {456FDF5E-3C9E-4981-BED0-97EE548A01BB}
 		{9A2891F4-31CB-42C1-8E0B-65B2819DC3AA} = {456FDF5E-3C9E-4981-BED0-97EE548A01BB}
+		{BD35035C-684F-4C37-B571-0A97B1422938} = {A6DA12BE-495D-4E69-9C8C-5D520D591161}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3413E962-E51A-44AA-A2D3-9FB9F2460F0B}
 	EndGlobalSection
 EndGlobal
