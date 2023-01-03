@@ -10,7 +10,7 @@ public class HeavyWorkloadUnitTests
     }
 
     [Test]
-    public async Task HeavyWorkload_GeneratesString()
+    public void HeavyWorkload_GeneratesString()
     {
         //Arrange
         var controller = new HeavyWorkloadController();
