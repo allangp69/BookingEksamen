@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "HeavyWorkload Async";
+}
+@model BookingEksamenWebUI.Models.HeavyWorkloadObject
+
+<div class="text-center">
+    <h1 class="display-4">Normal Workload page</h1>
+    @{
+        <p>@Model.HeavyWorkloadResult</p>
+        <p>Result retrieved in @Model.StopWatchElapsed.Milliseconds milliseconds</p>
+    }
+</div>

@@ -1,11 +1,9 @@
-﻿@using BookingEksamenWebUI.Helpers
-@using BookingEksamenWebUI.Models
+﻿@using BookingEksamenWebUI.Models
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Dashboard";
 }
 @model Booker
-@inject IBookerAPIHelper BookerApiHelper
 
 <div class="text-center">
     <h1 class="display-4">Welcome to the BookAShow dashboard for Bookers</h1>
@@ -23,21 +21,43 @@
                     </li>
                 </ul>
             </div>
+            @* Heavy workload *@
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="HeavyWorkload" asp-action="HeavyWorkload">Heavy workload async</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="HeavyWorkload" asp-action="Heavy">Heavy workload</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="HeavyWorkload" asp-action="NormalWorkload">Normal workload async</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="HeavyWorkload" asp-action="Normal">Normal workload</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-
-
-    @foreach (var booker in BookerApiHelper.GetBookersAsync().Result)
-    {
-        <li>@booker.Name</li>
-    }
-
+    <p>Manage bookings for your artists.</p>
     @if (Model is not null)
     {
-        <partial name="_BookerArtistsPartial" model="Model.Artists" />    
+        @foreach (var artist in Model.Artists)
+        {
+            <li>@artist.Name</li>
+        }
     }
-    
-    @* <img id="logo" src="~/images/musicNotes.png" alt="BookAShow logo" class="logo" width="500" height="600"/> *@
-
-    <p>Manage bookings for your artists.</p>
 </div>
