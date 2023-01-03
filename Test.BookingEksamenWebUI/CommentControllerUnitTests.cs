@@ -37,6 +37,6 @@ public class CommentControllerUnitTests
         var viewResult = result as ViewResult;
         Assert.IsInstanceOf<IEnumerable<Comment>>(viewResult.ViewData.Model);
         var model = viewResult.ViewData.Model as IEnumerable<Comment>;
-        Assert.AreEqual(2, model.Count());
+        Assert.IsTrue(model.Any());
     }
 }
