@@ -18,6 +18,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICommentAPIHelper, CommentAPIHelper>();
 builder.Services.AddSingleton<IBookerAPIHelper, BookerAPIHelper>();
 builder.Services.AddSingleton<IArtistAPIHelper, ArtistAPIHelper>();
+builder.Services.AddSingleton<IHeavyWorkloadAPIHelper, HeavyWorkloadAPIHelper>();
 builder.Services.AddScoped<IIsSignedInHelper, IsSignedInHelper>();
 
 var app = builder.Build();
