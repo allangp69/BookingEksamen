@@ -14,8 +14,7 @@ namespace BookingEksamenMAUI.Helpers.Artist
 
         public async Task<IEnumerable<Models.Artist>> GetArtistsAsync()
         {
-            IEnumerable<Models.Artist> artists = null;
-            HttpResponseMessage response = await ApiClient.GetAsync("api/Artist");
+            var response = await ApiClient.GetAsync("api/Artist");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsAsync<IEnumerable<Models.Artist>>();
         }

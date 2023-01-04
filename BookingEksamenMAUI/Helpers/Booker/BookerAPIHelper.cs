@@ -14,8 +14,7 @@ namespace BookingEksamenMAUI.Helpers.Booker
 
         public async Task<IEnumerable<Models.Booker>> GetBookersAsync()
         {
-            IEnumerable<Models.Booker> bookers = null;
-            HttpResponseMessage response = await ApiClient.GetAsync("api/Booker");
+            var response = await ApiClient.GetAsync("api/Booker");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsAsync<IEnumerable<Models.Booker>>();
         }
