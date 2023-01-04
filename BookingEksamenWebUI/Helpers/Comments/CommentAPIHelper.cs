@@ -13,8 +13,7 @@ namespace BookingEksamenWebUI.Helpers
 
         public async Task<IEnumerable<Comment>> GetCommentsAsync()
         {
-            IEnumerable<Comment> comments = null;
-            HttpResponseMessage response = await ApiClient.GetAsync("api/Comment");
+            var response = await ApiClient.GetAsync("api/Comment");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsAsync<IEnumerable<Comment>>();
         }

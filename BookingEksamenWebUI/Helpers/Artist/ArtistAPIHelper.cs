@@ -13,8 +13,7 @@ namespace BookingEksamenWebUI.Helpers
 
         public async Task<IEnumerable<Artist>> GetArtistsAsync()
         {
-            IEnumerable<Artist> artists = null;
-            HttpResponseMessage response = await ApiClient.GetAsync("api/Artist");
+            var response = await ApiClient.GetAsync("api/Artist");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsAsync<IEnumerable<Artist>>();
         }
