@@ -26,17 +26,12 @@ namespace BookingEksamenMAUI
 		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
-
-            var a = Assembly.GetExecutingAssembly();
-            using var stream = a.GetManifestResourceStream("MauiApp27.appsettings.json");
-
-            var config = new ConfigurationBuilder()
-                        .AddJsonStream(stream)
-                        .Build();
-
+            
+            var config = new ConfigurationBuilder()                        
+                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                        .Build();            
 
             builder.Configuration.AddConfiguration(config);
-
 
             builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddSingleton<ICommentAPIHelper, CommentAPIHelper>();
