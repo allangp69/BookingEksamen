@@ -1,5 +1,4 @@
-﻿using BookingEksamenMAUI.Data;
-using BookingEksamenMAUI.Helpers.Artist;
+﻿using BookingEksamenMAUI.Helpers.Artist;
 using BookingEksamenMAUI.Helpers.Booker;
 using BookingEksamenMAUI.Helpers.Comments;
 using Microsoft.Extensions.Configuration;
@@ -26,19 +25,19 @@ namespace BookingEksamenMAUI
 		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
-            
-            var config = new ConfigurationBuilder()                        
-                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                        .Build();            
 
+
+            var a = Assembly.GetExecutingAssembly();
+            using var stream = a.GetManifestResourceStream("BookingEksamenMAUI.appsettings.json");
+            var config = new ConfigurationBuilder().AddJsonStream(stream).Build();
             builder.Configuration.AddConfiguration(config);
+            //builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-            builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddSingleton<ICommentAPIHelper, CommentAPIHelper>();
             builder.Services.AddSingleton<IBookerAPIHelper, BookerAPIHelper>();
             builder.Services.AddSingleton<IArtistAPIHelper, ArtistAPIHelper>();
 
             return builder.Build();
-        }
+        }        
     }
 }
