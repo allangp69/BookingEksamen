@@ -1,12 +1,11 @@
 ﻿using System.Net;
-using System.Net.Http.Json;
 using BookingEksamenMAUI.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace BookingEksamenMAUI.Helpers.Comments
 {
     public class CommentAPIHelper
-        : APIHelperBase, ICommentAPIHelper, IAuthenticationAPIHelper
+        : APIHelperBase, ICommentAPIHelper
     {
         public CommentAPIHelper(IConfiguration configuration)
             :base(configuration)
@@ -14,7 +13,8 @@ namespace BookingEksamenMAUI.Helpers.Comments
         }
         public IEnumerable<Comment> GetComments()
         {
-            var response = ApiClient.GetAsync("api/Comment").Result;
+           var response = ApiClient.GetAsync("api/Comment").Result;
+            
             response.EnsureSuccessStatusCode();
             return response.Content.ReadAsAsync<IEnumerable<Comment>>().Result;
         }

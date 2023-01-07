@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 namespace BookingEksamenMAUI.Helpers.Artist
 {
     public class ArtistAPIHelper
-        : APIHelperBase, IArtistAPIHelper, IAuthenticationAPIHelper
+        : APIHelperBase, IArtistAPIHelper
     {
         public ArtistAPIHelper(IConfiguration configuration)
             :base(configuration)

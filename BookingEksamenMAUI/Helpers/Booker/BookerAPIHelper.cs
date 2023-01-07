@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 namespace BookingEksamenMAUI.Helpers.Booker
 {
     public class BookerAPIHelper
-        : APIHelperBase, IBookerAPIHelper, IAuthenticationAPIHelper
+        : APIHelperBase, IBookerAPIHelper
     {
         public BookerAPIHelper(IConfiguration configuration)
             :base(configuration)

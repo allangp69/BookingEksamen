@@ -1,14 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:BookingEksamenMAUI"
-             x:Class="BookingEksamenMAUI.MainPage"
-             BackgroundColor="{DynamicResource PageBackgroundColor}">
+             x:Class="BookingEksamenMAUI.MainPage">
 
-    <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html">
-        <BlazorWebView.RootComponents>
-            <RootComponent Selector="#app" ComponentType="{x:Type local:Main}" />
-        </BlazorWebView.RootComponents>
-    </BlazorWebView>
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Welcome to BookAShow"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Image
+                Source="musicNotes.png"
+                SemanticProperties.Description="BookAShow image!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <!--<a class="link text-dark" asp-area="" asp-controller="Home" asp-action="ReadMore">Read more</a> ]-->
+            <Label
+                Text="Your tool to manage artist bookings. [Read more]."
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Your tool to manage artist bookings"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

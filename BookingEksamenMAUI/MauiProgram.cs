@@ -1,9 +1,11 @@
-﻿using BookingEksamenMAUI.Helpers.Artist;
+﻿using System.Reflection;
+using BookingEksamenMAUI.Helpers.Artist;
 using BookingEksamenMAUI.Helpers.Booker;
 using BookingEksamenMAUI.Helpers.Comments;
+using BookingEksamenMAUI.ViewModels;
+using BookingEksamenMAUI.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Reflection;
 
 namespace BookingEksamenMAUI
 {
@@ -17,15 +19,12 @@ namespace BookingEksamenMAUI
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddMauiBlazorWebView();
-
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
-
 
             var a = Assembly.GetExecutingAssembly();
             using var stream = a.GetManifestResourceStream("BookingEksamenMAUI.appsettings.json");
@@ -36,8 +35,10 @@ namespace BookingEksamenMAUI
             builder.Services.AddSingleton<ICommentAPIHelper, CommentAPIHelper>();
             builder.Services.AddSingleton<IBookerAPIHelper, BookerAPIHelper>();
             builder.Services.AddSingleton<IArtistAPIHelper, ArtistAPIHelper>();
+            builder.Services.AddTransient<CommentsPage>();
+            builder.Services.AddTransient<CommentViewModel>();
 
             return builder.Build();
-        }        
+        }
     }
 }

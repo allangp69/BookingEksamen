@@ -26,27 +26,27 @@ namespace BookingEksamenMAUI.Helpers
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         
-        public async Task<AuthenticatedUser> Authenticate(string username, string password, string email)
-        {
-            // var data = new FormUrlEncodedContent(new[]
-            // {
-            //     new KeyValuePair<string, string>("grant_type", "password"),
-            //     new KeyValuePair<string, string>("username", username),
-            //     new KeyValuePair<string, string>("password", password)
-            // });
-            var data = new FormUrlEncodedContent(new[]
-            {
-                new KeyValuePair<string, string>("userName", username),
-                new KeyValuePair<string, string>("email", email),
-                new KeyValuePair<string, string>("password", password),
-                new KeyValuePair<string, string>("createdDate", DateTime.UtcNow.ToString("O"))
-            });
+        //public async Task<AuthenticatedUser> Authenticate(string username, string password, string email)
+        //{
+        //    // var data = new FormUrlEncodedContent(new[]
+        //    // {
+        //    //     new KeyValuePair<string, string>("grant_type", "password"),
+        //    //     new KeyValuePair<string, string>("username", username),
+        //    //     new KeyValuePair<string, string>("password", password)
+        //    // });
+        //    var data = new FormUrlEncodedContent(new[]
+        //    {
+        //        new KeyValuePair<string, string>("userName", username),
+        //        new KeyValuePair<string, string>("email", email),
+        //        new KeyValuePair<string, string>("password", password),
+        //        new KeyValuePair<string, string>("createdDate", DateTime.UtcNow.ToString("O"))
+        //    });
 
-            using (HttpResponseMessage response = await ApiClient.PostAsJsonAsync("/api/Token", data))
-            {
-                response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsAsync<AuthenticatedUser>();
-            }
-        }
+        //    using (HttpResponseMessage response = await ApiClient.PostAsJsonAsync("/api/Token", data))
+        //    {
+        //        response.EnsureSuccessStatusCode();
+        //        return await response.Content.ReadAsAsync<AuthenticatedUser>();
+        //    }
+        //}
     }
 }
