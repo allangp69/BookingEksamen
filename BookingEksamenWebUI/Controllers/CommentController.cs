@@ -26,7 +26,7 @@ namespace BookingEksamenWebUI.Controllers
         
         
         // GET: Comments/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return View();
         }

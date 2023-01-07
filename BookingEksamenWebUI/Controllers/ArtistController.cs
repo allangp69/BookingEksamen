@@ -16,7 +16,7 @@ namespace BookingEksamenWebUI.Controllers
             _artistApiHelper = artistApiHelper;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (_artistApiHelper is not IAuthenticationAPIHelper authenticationHelper)
             {
@@ -25,7 +25,7 @@ namespace BookingEksamenWebUI.Controllers
             try
             {
                 //Authentication does not work yet - so the Authenticate call is wrapped in a try/catch for now
-                var result = authenticationHelper.Authenticate("","", "");
+                var result = await authenticationHelper.Authenticate("","", "");
             }
             catch (Exception e)
             {

@@ -34,17 +34,17 @@ namespace BookingEksamenWebUI.Controllers
             return View();
         }
 
-        public IActionResult ReadMore()
+        public async Task<IActionResult> ReadMore()
         {
             return View();
         }
 
-        public IActionResult Contact()
+        public async Task<IActionResult> Contact()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
             return View();
         }
