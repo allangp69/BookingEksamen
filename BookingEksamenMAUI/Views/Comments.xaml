@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookingEksamenMAUI.Views.CommentsPage"
+             xmlns:viewmodel="clr-namespace:BookingEksamenMAUI.ViewModels"             
+             xmlns:model="clr-namespace:BookingEksamenMAUI.Models"
+             x:DataType="viewmodel:CommentViewModel"
              Shell.FlyoutBehavior="Flyout">
     <ScrollView>
         <VerticalStackLayout
@@ -15,29 +18,27 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <ListView ItemsSource="{Binding Comments}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding LastName}" FontAttributes="Bold" />
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding FirstMidName}" FontAttributes="Bold" />
-                                <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding EmailAddress}" FontAttributes="Bold" />
-                                <Label Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding CommentText}" FontAttributes="Italic" VerticalOptions="End" />
-                            </Grid>
-                        </ViewCell>
+            <CollectionView ItemsSource="{Binding Comments}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type model:Comment}">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding LastName}" FontAttributes="Bold" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding FirstMidName}" FontAttributes="Bold" />
+                            <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding EmailAddress}" FontAttributes="Bold" />
+                            <Label Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding CommentText}" FontAttributes="Italic" VerticalOptions="End" />
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </VerticalStackLayout>
     </ScrollView>

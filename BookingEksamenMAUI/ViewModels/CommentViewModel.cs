@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel;
 using BookingEksamenMAUI.Helpers.Comments;
 using BookingEksamenMAUI.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace BookingEksamenMAUI.ViewModels
 {
-    public class CommentViewModel : INotifyPropertyChanged
+    public partial class CommentViewModel : ObservableObject
     {
         private readonly ICommentAPIHelper _commentApiHelper;
 
@@ -14,30 +15,8 @@ namespace BookingEksamenMAUI.ViewModels
             Comments = _commentApiHelper.GetComments().ToList();
         }
 
-        private List<Comment> _comments;
+        [ObservableProperty]
+        private List<Comment> comments;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public List<Comment> Comments 
-        {
-            get
-            {
-                return _comments;
-            }
-            set
-            {
-                _comments = value;
-                OnPropertyChanged("Comments");
-            }
-        }
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) 
-            {
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }
