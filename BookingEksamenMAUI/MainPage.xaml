@@ -16,7 +16,7 @@
                 HorizontalOptions="Center" />
 
             <Image
-                Source="musicNotes.png"
+                Source="musicnotes_small.png"
                 SemanticProperties.Description="BookAShow image!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
